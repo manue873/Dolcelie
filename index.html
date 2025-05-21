@@ -179,6 +179,7 @@
       background-color: var(--secondary-color);
       position: relative;
       overflow: hidden;
+      padding: 12px 0;
     }
     
     .about-decoration {
@@ -463,6 +464,14 @@
     }
     
     @media (max-width: 576px) {
+      .about-content {
+    padding: 2rem 1.5rem; /* Más espacio lateral en móviles */
+  }
+
+  .about-image {
+    height: auto;
+    margin-bottom: 0.8rem;
+  }
       .hero h1 {
         font-size: 1.8rem;
       }
