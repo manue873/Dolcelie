@@ -5,140 +5,809 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Dolcelie - Chocotejas y Dulces Temáticos</title>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
   <style>
+    :root {
+      --primary-color: #FF80AB;
+      --secondary-color: #FFD9E3;
+      --accent-color: #E91E63;
+      --dark-accent: #C2185B;
+      --text-color: #5D4037;
+      --light-bg: #FFF8F9;
+    }
+    
     body {
-      font-family: 'Segoe UI', sans-serif;
-      background-color: #fff8f9;
+      font-family: 'Poppins', sans-serif;
+      background-color: var(--light-bg);
+      color: var(--text-color);
+      overflow-x: hidden;
     }
-    .hero {
-  background-image: url('Images/ChatGPT\ Image\ 20\ may\ 2025\,\ 19_03_19.png');
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-  color: white; /* Asegura contraste */
-  padding: 100px 20px; /* Puedes ajustar esto */
-  text-align: center;
-}
-
-    .product-img {
-      border-radius: 15px;
+    
+    .brand-font {
+      font-family: 'Pacifico', cursive;
+    }
+    
+    /* Navbar */
+    .navbar {
+      background-color: rgba(255, 255, 255, 0.95);
+      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+      transition: all 0.3s ease;
+    }
+    
+    .navbar-brand {
+      font-family: 'Pacifico', cursive;
+      font-size: 1.8rem;
+      color: var(--accent-color);
+    }
+    
+    .navbar-toggler {
+      border: none;
+      outline: none;
+    }
+    
+    .nav-link {
+      font-weight: 500;
+      position: relative;
+      margin: 0 10px;
+    }
+    
+    .nav-link::after {
+      content: '';
+      position: absolute;
+      width: 0;
+      height: 2px;
+      bottom: 0;
+      left: 0;
+      background-color: var(--accent-color);
+      transition: width 0.3s;
+    }
+    
+    .nav-link:hover::after {
       width: 100%;
-      height: 200px;
-      object-fit: cover;
     }
-    .social-buttons {
+    
+    /* Hero Section */
+    .hero {
+      background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url('Images/ChatGPT\ Image\ 20\ may\ 2025\,\ 19_03_19.png') ;
+      background-size: cover;
+      background-position: center;
+      color: white;
+      height: 100vh;
+      padding: 100px 20px;
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      position: relative;
+    }
+    
+    .hero-content {
+      max-width: 800px;
+      z-index: 2;
+    }
+    
+    .hero h1 {
+      font-family: 'Pacifico', cursive;
+      font-size: 3.5rem;
+      margin-bottom: 1rem;
+      text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+    }
+    
+    .hero p {
+      font-size: 1.3rem;
+      margin-bottom: 2rem;
+      text-shadow: 1px 1px 3px rgba(0,0,0,0.5);
+    }
+    
+    .hero-btn {
+      background-color: var(--accent-color);
+      color: white;
+      border: none;
+      padding: 12px 30px;
+      border-radius: 30px;
+      font-weight: 600;
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 10px rgba(233, 30, 99, 0.3);
+    }
+    
+    .hero-btn:hover {
+      background-color: var(--dark-accent);
+      transform: translateY(-2px);
+      box-shadow: 0 6px 12px rgba(233, 30, 99, 0.4);
+    }
+    
+    /* Products Section */
+    .section-title {
+      position: relative;
+      display: inline-block;
+      margin-bottom: 2.5rem;
+    }
+    
+    .section-title::after {
+      content: '';
+      position: absolute;
+      width: 50%;
+      height: 3px;
+      background-color: var(--accent-color);
+      bottom: -10px;
+      left: 25%;
+    }
+    
+    .product-card {
+      border-radius: 15px;
+      overflow: hidden;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+      transition: all 0.3s ease;
+      height: 100%;
+      border: none;
+    }
+    
+    .product-card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 15px 30px rgba(0,0,0,0.15);
+    }
+    
+    .product-img {
+      height: 250px;
+      object-fit: cover;
+      transition: all 0.5s ease;
+    }
+    
+    .product-card:hover .product-img {
+      transform: scale(1.05);
+    }
+    
+    .product-icon {
+      color: var(--accent-color);
+      margin-right: 8px;
+    }
+    
+    .card-body {
+      padding: 1.5rem;
+    }
+    
+    .card-title {
+      font-weight: 600;
+      margin-bottom: 1rem;
+      color: var(--accent-color);
+    }
+    
+    /* About Section */
+    .about-section {
+      background-color: var(--secondary-color);
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .about-decoration {
+      position: absolute;
+      width: 150px;
+      height: 150px;
+      border-radius: 50%;
+      background-color: rgba(255, 128, 171, 0.2);
+      z-index: 0;
+    }
+    
+    .about-decoration-1 {
+      top: -50px;
+      left: -50px;
+    }
+    
+    .about-decoration-2 {
+      bottom: -50px;
+      right: -50px;
+    }
+    
+    .about-content {
+      position: relative;
+      z-index: 1;
+      padding: 3rem 0;
+    }
+    
+    .about-image {
+      width: 100%;
+      height: 300px;
+      object-fit: cover;
+      border-radius: 15px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+    }
+    
+    /* Testimonials */
+    .testimonial-card {
+      background: white;
+      border-radius: 15px;
+      padding: 2rem;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+      height: 100%;
+      position: relative;
+    }
+    
+    .testimonial-card::before {
+      content: '\201C';
+      font-family: 'Georgia', serif;
+      font-size: 4rem;
+      position: absolute;
+      top: 10px;
+      left: 15px;
+      color: var(--secondary-color);
+      opacity: 0.5;
+    }
+    
+    .client-img {
+      width: 70px;
+      height: 70px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 3px solid var(--primary-color);
+    }
+    
+    .quote {
+      font-style: italic;
+      margin-bottom: 1.5rem;
+    }
+    
+    /* Contact Section */
+    .contact-section {
+      background: linear-gradient(135deg, #FF80AB 0%, #FF4081 100%);
+      color: white;
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .contact-decoration {
+      position: absolute;
+      width: 200px;
+      height: 200px;
+      border-radius: 50%;
+      background-color: rgba(255, 255, 255, 0.1);
+      z-index: 0;
+    }
+    
+    .contact-decoration-1 {
+      top: -100px;
+      right: 10%;
+    }
+    
+    .contact-decoration-2 {
+      bottom: -100px;
+      left: 5%;
+    }
+    
+    .contact-content {
+      position: relative;
+      z-index: 1;
+      padding: 4rem 0;
+    }
+    
+    .contact-form {
+      background-color: white;
+      border-radius: 15px;
+      padding: 2rem;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+    }
+    
+    .form-control {
+      border-radius: 30px;
+      padding: 12px 20px;
+      border: 1px solid #ddd;
+      margin-bottom: 1rem;
+    }
+    
+    .form-control:focus {
+      box-shadow: 0 0 0 3px rgba(255, 128, 171, 0.25);
+      border-color: var(--primary-color);
+    }
+    
+    textarea.form-control {
+      border-radius: 15px;
+      min-height: 120px;
+    }
+    
+    .submit-btn {
+      background: var(--accent-color);
+      color: white;
+      border: none;
+      border-radius: 30px;
+      padding: 12px 30px;
+      font-weight: 600;
+      transition: all 0.3s ease;
+      width: 100%;
+    }
+    
+    .submit-btn:hover {
+      background: var(--dark-accent);
+      transform: translateY(-2px);
+      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    }
+    
+    /* Footer */
+    footer {
+      background-color: #5D4037;
+      color: white;
+    }
+    
+    .footer-brand {
+      font-family: 'Pacifico', cursive;
+      font-size: 2rem;
+      margin-bottom: 1rem;
+    }
+    
+    .footer-links {
+      list-style: none;
+      padding: 0;
+    }
+    
+    .footer-links li {
+      margin-bottom: 0.5rem;
+    }
+    
+    .footer-links a {
+      color: rgba(255, 255, 255, 0.8);
+      text-decoration: none;
+      transition: all 0.3s ease;
+    }
+    
+    .footer-links a:hover {
+      color: white;
+      padding-left: 5px;
+    }
+    
+    .social-links {
+      text-align: center;
+    }
+    
+    .social-icon {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background-color: rgba(255, 255, 255, 0.1);
+      color: white;
+      margin: 0 5px;
+      transition: all 0.3s ease;
+    }
+    
+    .social-icon:hover {
+      background-color: var(--primary-color);
+      transform: translateY(-3px);
+    }
+    
+    .copyright {
+      background-color: rgba(0, 0, 0, 0.2);
+    }
+    
+    /* Social Float Buttons */
+    .social-float {
       position: fixed;
       bottom: 20px;
       right: 20px;
-      z-index: 999;
+      z-index: 99;
       display: flex;
       flex-direction: column;
-      gap: 10px;
+      gap: 15px;
     }
-    .social-buttons a {
-      background-color: #fff;
+    
+    .social-float-btn {
+      width: 50px;
+      height: 50px;
       border-radius: 50%;
-      padding: 10px;
-      box-shadow: 0 0 5px rgba(0,0,0,0.2);
-      text-align: center;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 3px 10px rgba(0,0,0,0.2);
+      transition: all 0.3s ease;
     }
-    .social-buttons img {
-      width: 24px;
-      height: 24px;
+    
+    .social-float-btn:hover {
+      transform: scale(1.1);
+    }
+    
+    .whatsapp-btn {
+      background-color: #25D366;
+      color: white;
+    }
+    
+    .instagram-btn {
+      background: radial-gradient(circle at 30% 107%, #fdf497 0%, #fdf497 5%, #fd5949 45%, #d6249f 60%, #285AEB 90%);
+      color: white;
+    }
+    
+    .facebook-btn {
+      background-color: #4267B2;
+      color: white;
+    }
+    
+    /* Animation */
+    .fade-in {
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 0.5s ease, transform 0.5s ease;
+    }
+    
+    .fade-in.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    
+    /* Responsive Adjustments */
+    @media (max-width: 992px) {
+      .hero h1 {
+        font-size: 2.8rem;
+      }
+      
+      .hero p {
+        font-size: 1.1rem;
+      }
+    }
+    
+    @media (max-width: 768px) {
+      .hero {
+        padding: 80px 15px;
+      }
+      
+      .hero h1 {
+        font-size: 2.2rem;
+      }
+      
+      .product-img {
+        height: 220px;
+      }
+      
+      .section-title {
+        font-size: 1.8rem;
+      }
+    }
+    
+    @media (max-width: 576px) {
+      .hero h1 {
+        font-size: 1.8rem;
+      }
+      
+      .hero p {
+        font-size: 1rem;
+      }
+      
+      .hero-btn {
+        padding: 10px 25px;
+      }
+      
+      .section-title {
+        font-size: 1.5rem;
+      }
+      
+      .product-img {
+        height: 180px;
+      }
+      
+      .footer-brand {
+        font-size: 1.5rem;
+      }
     }
   </style>
 </head>
 <body>
-
-  <!-- Social Buttons -->
-  <div class="social-buttons">
-    <a href="https://wa.me/51912345678" target="_blank"><img src="https://cdn-icons-png.flaticon.com/512/733/733585.png" alt="WhatsApp" /></a>
-    <a href="https://instagram.com/dolcelie" target="_blank"><img src="https://cdn-icons-png.flaticon.com/512/2111/2111463.png" alt="Instagram" /></a>
-    <a href="https://facebook.com/dolcelie" target="_blank"><img src="https://cdn-icons-png.flaticon.com/512/733/733547.png" alt="Facebook" /></a>
-  </div>
-
- <!-- Hero -->
-<section class="hero">
-  <h1 class="display-4 fw-bold">Bienvenidos a Dolcelie 🎀</h1>
-  <p class="lead">Chocotejas, dulces y detalles irresistibles con temáticas como Hello Kitty y más.</p>
-  <a href="#productos" class="btn btn-light btn-lg mt-3">Ver productos</a>
-</section>
-
-  <!-- Productos -->
-  <section class="container py-5" id="productos">
-    <h2 class="text-center mb-4">Nuestros Dulces Destacados</h2>
-    <div class="row g-4">
-      <div class="col-md-4">
-        <div class="card shadow-sm">
-          <img src="https://i.pinimg.com/originals/1f/0c/38/1f0c387b351e45e73577ae3bbd9648e8.jpg" alt="Chocotejas Hello Kitty" class="product-img"/>
-          <div class="card-body text-center">
-            <h5 class="card-title">Chocotejas Hello Kitty</h5>
-            <p class="card-text">Sabor y ternura en cada bocado.</p>
-          </div>
-        </div>
-      </div>
-      <div class="col-md-4">
-        <div class="card shadow-sm">
-          <img src="https://i.pinimg.com/564x/00/3e/ea/003eea7e4c6a75abdf6cfeb38c5580c6.jpg" alt="Dulces personalizados" class="product-img"/>
-          <div class="card-body text-center">
-            <h5 class="card-title">Dulces Temáticos</h5>
-            <p class="card-text">Personaliza tus eventos con detalles únicos.</p>
-          </div>
-        </div>
-      </div>
-      <div class="col-md-4">
-        <div class="card shadow-sm">
-          <img src="https://i.pinimg.com/originals/17/6d/4b/176d4b6c0edbce3e0999cd45fd9b8e76.jpg" alt="Chocobombas" class="product-img"/>
-          <div class="card-body text-center">
-            <h5 class="card-title">Chocobombas</h5>
-            <p class="card-text">Deliciosas sorpresas para compartir.</p>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Sobre Nosotros -->
-  <section class="bg-light py-5">
-    <div class="container text-center">
-      <h2>¿Quiénes somos?</h2>
-      <p class="mt-3">Dolcelie nace del amor por los detalles y los sabores dulces. Creamos experiencias memorables en cada chocoteja y dulce temático que entregamos.</p>
-    </div>
-  </section>
-
-  <!-- Testimonios -->
-  <section class="container py-5">
-    <h2 class="text-center mb-4">Lo que dicen nuestras clientas</h2>
-    <div class="row text-center">
-      <div class="col-md-4">
-        <blockquote>“Me encantaron las chocotejas Hello Kitty, perfectas para el cumpleaños de mi hija.”</blockquote>
-        <cite>- Mariana R.</cite>
-      </div>
-      <div class="col-md-4">
-        <blockquote>“Todo llega rápido y muy bien presentado, súper recomendable.”</blockquote>
-        <cite>- Alejandra V.</cite>
-      </div>
-      <div class="col-md-4">
-        <blockquote>“Ideal para regalar, ya van tres veces que compro 💖.”</blockquote>
-        <cite>- Paula G.</cite>
-      </div>
-    </div>
-  </section>
-
-  <!-- Contacto -->
-  <section class="bg-pink-100 py-5 text-center">
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-lg navbar-light fixed-top">
     <div class="container">
-      <h2>Contáctanos</h2>
-      <p>Haz tu pedido por WhatsApp o escríbenos en redes sociales.</p>
-      <a href="https://wa.me/51912345678" class="btn btn-success">Enviar mensaje</a>
+      <a class="navbar-brand" href="#">
+        <span class="brand-font">Dolcelie</span> 
+        <span class="ms-1">🍫✨</span>
+      </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item">
+            <a class="nav-link" href="#home">Inicio</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#productos">Productos</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#nosotros">Nosotros</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#testimonios">Testimonios</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#contacto">Contacto</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Hero Section -->
+  <section class="hero" id="home">
+    <div class="hero-content">
+      <h1 class="mb-4">Endulza tus momentos con Dolcelie 🍫✨</h1>
+      <p class="mb-4">Descubre nuestras chocotejas artesanales y dulces temáticos hechos con amor</p>
+      <a href="#productos" class="btn hero-btn">Ver productos <i class="fas fa-chevron-right ms-2"></i></a>
+    </div>
+  </section>
+
+  <!-- Products Section -->
+  <section class="py-5" id="productos">
+    <div class="container py-4">
+      <h2 class="text-center section-title mb-5">Nuestros Dulces Destacados</h2>
+      <div class="row g-4">
+        <!-- Product 1 -->
+        <div class="col-md-4 fade-in">
+          <div class="product-card">
+            <div class="overflow-hidden">
+              <img src="https://i.pinimg.com/originals/1f/0c/38/1f0c387b351e45e73577ae3bbd9648e8.jpg" alt="Chocotejas Hello Kitty" class="product-img w-100"/>
+            </div>
+            <div class="card-body text-center">
+              <h5 class="card-title"><i class="fas fa-heart product-icon"></i>Chocotejas Hello Kitty</h5>
+              <p class="card-text">Sabor y ternura en cada bocado. Perfectas para regalar a los amantes de Hello Kitty.</p>
+              <button class="btn btn-outline-danger mt-2">Ver más</button>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Product 2 -->
+        <div class="col-md-4 fade-in" style="transition-delay: 0.1s;">
+          <div class="product-card">
+            <div class="overflow-hidden">
+              <img src="https://i.pinimg.com/564x/00/3e/ea/003eea7e4c6a75abdf6cfeb38c5580c6.jpg" alt="Dulces personalizados" class="product-img w-100"/>
+            </div>
+            <div class="card-body text-center">
+              <h5 class="card-title"><i class="fas fa-star product-icon"></i>Dulces Temáticos</h5>
+              <p class="card-text">Personaliza tus eventos con detalles únicos. Diseños a pedido para cada ocasión.</p>
+              <button class="btn btn-outline-danger mt-2">Ver más</button>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Product 3 -->
+        <div class="col-md-4 fade-in" style="transition-delay: 0.2s;">
+          <div class="product-card">
+            <div class="overflow-hidden">
+              <img src="https://i.pinimg.com/originals/17/6d/4b/176d4b6c0edbce3e0999cd45fd9b8e76.jpg" alt="Chocobombas" class="product-img w-100"/>
+            </div>
+            <div class="card-body text-center">
+              <h5 class="card-title"><i class="fas fa-gift product-icon"></i>Chocobombas</h5>
+              <p class="card-text">Deliciosas sorpresas para compartir. ¡Un estallido de sabor y diversión!</p>
+              <button class="btn btn-outline-danger mt-2">Ver más</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- About Section -->
+  <section class="about-section py-5" id="nosotros">
+    <div class="about-decoration about-decoration-1"></div>
+    <div class="about-decoration about-decoration-2"></div>
+    <div class="container about-content">
+      <div class="row align-items-center">
+        <div class="col-lg-6 mb-4 mb-lg-0 fade-in">
+          <img src="https://images.unsplash.com/photo-1562440499-64c9a111f713?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1350&q=80" class="about-image" alt="Nuestra historia">
+        </div>
+        <div class="col-lg-6 fade-in" style="transition-delay: 0.1s;">
+          <h2 class="section-title">¿Quiénes somos?</h2>
+          <p class="mb-4">Dolcelie nace en 2023 del amor por los detalles y los sabores dulces. Nuestra fundadora, Camila, experimentó durante años con recetas familiares hasta perfeccionar las chocotejas que hoy encantan a todos nuestros clientes.</p>
+          <p>Nos especializamos en crear experiencias memorables en cada chocoteja y dulce temático que entregamos. Nuestro compromiso es usar ingredientes de la más alta calidad y diseños que sorprendan a primera vista y deleiten al primer bocado.</p>
+          <div class="d-flex mt-4">
+            <div class="me-4">
+              <h4 class="brand-font" style="color: var(--accent-color);">100%</h4>
+              <p class="small">Ingredientes naturales</p>
+            </div>
+            <div class="me-4">
+              <h4 class="brand-font" style="color: var(--accent-color);">500+</h4>
+              <p class="small">Clientes felices</p>
+            </div>
+            <div>
+              <h4 class="brand-font" style="color: var(--accent-color);">50+</h4>
+              <p class="small">Diseños únicos</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Testimonials Section -->
+  <section class="py-5" id="testimonios">
+    <div class="container py-4">
+      <h2 class="text-center section-title mb-5">Lo que dicen nuestros clientes</h2>
+      <div class="row g-4">
+        <!-- Testimonial 1 -->
+        <div class="col-md-4 fade-in">
+          <div class="testimonial-card">
+            <p class="quote">"Me encantaron las chocotejas Hello Kitty, perfectas para el cumpleaños de mi hija. La presentación es hermosa y el sabor delicioso."</p>
+            <div class="d-flex align-items-center">
+              <img src="https://randomuser.me/api/portraits/women/44.jpg" alt="Mariana R." class="client-img me-3">
+              <div>
+                <h6 class="mb-0">Mariana R.</h6>
+                <p class="small text-muted mb-0">Lima</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Testimonial 2 -->
+        <div class="col-md-4 fade-in" style="transition-delay: 0.1s;">
+          <div class="testimonial-card">
+            <p class="quote">"Todo llega rápido y muy bien presentado, súper recomendable. Las chocobombas fueron el centro de atención en mi reunión familiar."</p>
+            <div class="d-flex align-items-center">
+              <img src="https://randomuser.me/api/portraits/women/68.jpg" alt="Alejandra V." class="client-img me-3">
+              <div>
+                <h6 class="mb-0">Alejandra V.</h6>
+                <p class="small text-muted mb-0">Trujillo</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Testimonial 3 -->
+        <div class="col-md-4 fade-in" style="transition-delay: 0.2s;">
+          <div class="testimonial-card">
+            <p class="quote">"Ideal para regalar, ya van tres veces que compro. La atención es excelente y la calidad incomparable. ¡Los dulces temáticos son una obra de arte! 💖"</p>
+            <div class="d-flex align-items-center">
+              <img src="https://randomuser.me/api/portraits/women/90.jpg" alt="Paula G." class="client-img me-3">
+              <div>
+                <h6 class="mb-0">Paula G.</h6>
+                <p class="small text-muted mb-0">Arequipa</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact Section -->
+  <section class="contact-section" id="contacto">
+    <div class="contact-decoration contact-decoration-1"></div>
+    <div class="contact-decoration contact-decoration-2"></div>
+    <div class="container contact-content">
+      <div class="row justify-content-center">
+        <div class="col-lg-6 text-center mb-5">
+          <h2 class="mb-4">Contáctanos</h2>
+          <p>¿Tienes alguna pregunta o quieres hacer un pedido personalizado? Estamos aquí para ayudarte a endulzar tus momentos especiales.</p>
+        </div>
+      </div>
+      <div class="row justify-content-center">
+        <div class="col-lg-8">
+          <div class="contact-form">
+            <form>
+              <div class="row">
+                <div class="col-md-6 mb-3">
+                  <input type="text" class="form-control" placeholder="Nombre" required>
+                </div>
+                <div class="col-md-6 mb-3">
+                  <input type="email" class="form-control" placeholder="Email" required>
+                </div>
+              </div>
+              <div class="mb-3">
+                <input type="text" class="form-control" placeholder="Asunto">
+              </div>
+              <div class="mb-4">
+                <textarea class="form-control" rows="4" placeholder="Mensaje" required></textarea>
+              </div>
+              <button type="submit" class="submit-btn">Enviar mensaje <i class="fas fa-paper-plane ms-2"></i></button>
+            </form>
+          </div>
+        </div>
+      </div>
     </div>
   </section>
 
   <!-- Footer -->
-  <footer class="bg-light text-center py-3">
-    <p>&copy; 2025 Dolcelie. Todos los derechos reservados.</p>
+  <footer class="pt-5">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-4 mb-4 mb-md-0">
+          <div class="footer-brand text-white">Dolcelie</div>
+          <p class="mb-4">Creamos experiencias dulces y memorables para todos tus momentos especiales.</p>
+          <div class="social-links mb-4">
+            <a href="https://instagram.com/dolcelie" class="social-icon" target="_blank"><i class="fab fa-instagram"></i></a>
+            <a href="https://facebook.com/dolcelie" class="social-icon" target="_blank"><i class="fab fa-facebook-f"></i></a>
+            <a href="https://wa.me/51912345678" class="social-icon" target="_blank"><i class="fab fa-whatsapp"></i></a>
+          </div>
+        </div>
+        <div class="col-md-2 mb-4 mb-md-0">
+          <h5 class="mb-3">Enlaces</h5>
+          <ul class="footer-links">
+            <li><a href="#home">Inicio</a></li>
+            <li><a href="#productos">Productos</a></li>
+            <li><a href="#nosotros">Nosotros</a></li>
+            <li><a href="#testimonios">Testimonios</a></li>
+            <li><a href="#contacto">Contacto</a></li>
+          </ul>
+        </div>
+        <div class="col-md-3 mb-4 mb-md-0">
+          <h5 class="mb-3">Productos</h5>
+          <ul class="footer-links">
+            <li><a href="#">Chocotejas</a></li>
+            <li><a href="#">Dulces temáticos</a></li>
+            <li><a href="#">Chocobombas</a></li>
+            <li><a href="#">Regalos personalizados</a></li>
+            <li><a href="#">Cajas sorpresa</a></li>
+          </ul>
+        </div>
+        <div class="col-md-3">
+          <h5 class="mb-3">Contacto</h5>
+          <ul class="footer-links">
+            <li><i class="fas fa-map-marker-alt me-2"></i> Lima, Perú</li>
+            <li><i class="fas fa-phone me-2"></i> +51 912 345 678</li>
+            <li><i class="fas fa-envelope me-2"></i> hola@dolcelie.com</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="copyright mt-4 py-3 text-center">
+      <p class="small mb-0">&copy; 2025 Dolcelie. Todos los derechos reservados.</p>
+    </div>
   </footer>
 
+  <!-- Social Float Buttons -->
+  <div class="social-float">
+    <a href="https://wa.me/51912345678" class="social-float-btn whatsapp-btn" target="_blank">
+      <i class="fab fa-whatsapp fa-lg"></i>
+    </a>
+    <a href="https://instagram.com/dolcelie" class="social-float-btn instagram-btn" target="_blank">
+      <i class="fab fa-instagram fa-lg"></i>
+    </a>
+    <a href="https://facebook.com/dolcelie" class="social-float-btn facebook-btn" target="_blank">
+      <i class="fab fa-facebook-f fa-lg"></i>
+    </a>
+  </div>
+
+  <!-- Scripts -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+  <script>
+    // Navbar scroll effect
+    window.addEventListener('scroll', function() {
+      const navbar = document.querySelector('.navbar');
+      if (window.scrollY > 50) {
+        navbar.style.padding = '10px 0';
+        navbar.style.boxShadow = '0 2px 10px rgba(0,0,0,0.1)';
+      } else {
+        navbar.style.padding = '15px 0';
+        navbar.style.boxShadow = 'none';
+      }
+    });
+    
+    // Fade-in animation
+    document.addEventListener('DOMContentLoaded', function() {
+      const fadeElements = document.querySelectorAll('.fade-in');
+      
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+          }
+        });
+      }, { threshold: 0.1 });
+      
+      fadeElements.forEach(element => {
+        observer.observe(element);
+      });
+      
+      // Smooth scrolling for anchor links
+      document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function(e) {
+          e.preventDefault();
+          const targetId = this.getAttribute('href');
+          const targetElement = document.querySelector(targetId);
+          
+          if (targetElement) {
+            window.scrollTo({
+              top: targetElement.offsetTop - 70,
+              behavior: 'smooth'
+            });
+          }
+        });
+      });
+    });
+  </script>
 </body>
 </html>
